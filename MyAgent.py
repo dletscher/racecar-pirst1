@@ -12,11 +12,14 @@ class Agent:
 
 		distance = lidar[2]
 
-		if distance > 3 and velocity < 0.8:
+		if velocity == 0:
 			throttle = 'accelerate'
-		elif distance < 1.5 and velocity > 0.5:
+		elif distance > 3 and velocity <= 0.1:
+			throttle = 'accelerate'
+		elif distance < 1.5 and velocity > 0.1:
 			throttle = 'brake'
 		else:
-			throttle = 'cost'
+			throttle = 'coast'
+
 
 		return (steer, throttle)	
